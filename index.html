@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Attendance System</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-user-check"></i>
+                Smart Attendance System
+            </h1>
+            <a href="/admin/login" class="admin-link">
+                <i class="fas fa-user-shield"></i>
+                Admin Login
+            </a>
+        </div>
+        
+        <div class="options">
+            <div class="option-card">
+                <h2><i class="fas fa-camera"></i> Webcam Capture</h2>
+                <p>Take attendance in real-time using your webcam</p>
+                <button onclick="startWebcam()" id="webcamBtn">
+                    <i class="fas fa-video"></i> Start Webcam
+                </button>
+            </div>
+        </div>
+
+        <div id="webcamContainer" style="display: none;">
+            <video id="webcam" autoplay playsinline></video>
+            <p class="keyboard-hint">
+                <i class="fas fa-keyboard"></i>
+                Press <kbd>Enter</kbd> to capture attendance
+            </p>
+            <div class="webcam-controls">
+                <button onclick="captureImage()" id="captureBtn">
+                    <i class="fas fa-camera"></i> Capture
+                </button>
+                <button onclick="stopWebcam()" class="secondary">
+                    <i class="fas fa-stop"></i> Stop
+                </button>
+            </div>
+        </div>
+
+        <div id="resultContainer">
+            <h2><i class="fas fa-list"></i> Attendance Log</h2>
+            <div id="attendanceResults">
+                <p class="empty-state">No attendance records yet</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

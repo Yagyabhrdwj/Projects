@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Smart Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="admin-header">
+            <h1>
+                <i class="fas fa-user-shield"></i>
+                Admin Dashboard
+            </h1>
+            <a href="{{ url_for('logout') }}" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+
+        <div class="stats-card">
+            <h2><i class="fas fa-chart-bar"></i> Attendance Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalStudents">-</div>
+                    <div class="stat-label">Total Students</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="todayAttendance">-</div>
+                    <div class="stat-label">Today's Attendance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalAttendance">-</div>
+                    <div class="stat-label">Total Attendance Records</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="options">
+            <div class="option-card">
+                <h2><i class="fas fa-user-plus"></i> Add New Face</h2>
+                <p>Register a new person in the system</p>
+                <label class="file-input">
+                    <input type="file" id="newFaceImage" accept="image/*" onchange="handleFileSelect(this)">
+                </label>
+                <input type="text" id="personName" placeholder="Enter person's name">
+                <button onclick="addNewFace()" id="addFaceBtn" disabled>
+                    <i class="fas fa-plus"></i> Add Face
+                </button>
+            </div>
+
+            <div class="option-card">
+                <h2><i class="fas fa-list"></i> Registered Students</h2>
+                <p>Manage registered students in the system</p>
+                <div id="studentsList">
+                    <p class="empty-state">Loading students...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultContainer">
+            <h2><i class="fas fa-clipboard-list"></i> Recent Activity</h2>
+            <div id="operationResults"></div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>
